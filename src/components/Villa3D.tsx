@@ -343,14 +343,20 @@ const Villa3D = ({ highlightedKey }: Villa3DProps) => {
     <div className="relative w-full h-[520px] md:h-[600px] rounded-2xl overflow-hidden glass">
       <div ref={mountRef} className="absolute inset-0" />
       <div className="pointer-events-none absolute top-4 left-4 font-display text-xs tracking-[0.3em] text-cyan/80 uppercase">
-        ◉ Digital Twin · Live
+        ◉ Dijital İkiz · Canlı
+      </div>
+      <div className="pointer-events-none absolute top-4 right-4 flex flex-col gap-1 items-end font-display text-[9px] tracking-[0.25em] uppercase text-foreground/60">
+        <span>◰ Çatı Katı</span>
+        <span>◳ Yatak Odaları</span>
+        <span>◱ Salon</span>
+        <span>◲ Mekanik Oda</span>
       </div>
       <div className="pointer-events-none absolute bottom-4 right-4 font-display text-[10px] tracking-[0.25em] text-foreground/50 uppercase">
-        Drag to rotate · Scroll to zoom
+        Döndürmek için sürükle · Yakınlaştırmak için kaydır
       </div>
       {highlightedKey && (
         <div className="pointer-events-none absolute bottom-4 left-4 font-display text-xs tracking-[0.25em] uppercase amber-text animate-fade-in">
-          ▲ Highlighting: {highlightedKey}
+          ▲ Vurgulanıyor: {highlightedKey}
         </div>
       )}
     </div>
