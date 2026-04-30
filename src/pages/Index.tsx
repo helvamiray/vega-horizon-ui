@@ -88,9 +88,9 @@ const Index = () => {
           </a>
 
           <nav className="hidden md:flex items-center gap-8 font-display text-xs tracking-[0.25em] uppercase text-foreground/70">
-            <a href="#twin" className="hover:text-cyan transition-colors">Digital Twin</a>
-            <a href="#systems" className="hover:text-cyan transition-colors">Systems</a>
-            <a href="#quote" className="hover:text-cyan transition-colors">Quote</a>
+            <a href="#twin" className="hover:text-cyan transition-colors">Dijital İkiz</a>
+            <a href="#systems" className="hover:text-cyan transition-colors">Ürünler</a>
+            <a href="#quote" className="hover:text-cyan transition-colors">Teklif Al</a>
           </nav>
 
           <SocialIcons />
@@ -103,30 +103,30 @@ const Index = () => {
           <div className="hero-reveal inline-flex items-center gap-2 px-3 py-1 rounded-full glass border border-cyan/40 mb-6">
             <span className="w-2 h-2 rounded-full bg-cyan animate-pulse" />
             <span className="font-display text-[10px] tracking-[0.4em] uppercase text-cyan">
-              Smart HVAC · Energy Systems · Digital Twin
+              Akıllı HVAC · Enerji Sistemleri · Dijital İkiz
             </span>
           </div>
           <h1 className="hero-reveal font-display text-4xl md:text-6xl lg:text-7xl leading-[1.05] mb-6">
-            Engineering the <span className="text-gradient-cyan">future</span><br />
-            of indoor <span className="amber-text">climate</span>.
+            İç mekan <span className="text-gradient-cyan">ikliminin</span><br />
+            <span className="amber-text">geleceğini</span> mühendisliyoruz.
           </h1>
           <p className="hero-reveal text-base md:text-lg text-foreground/70 max-w-2xl mb-8">
-            VEGA designs and integrates premium HVAC, heat-pump and energy systems.
-            Explore an interactive 3D twin of a smart villa — select any system on the
-            right and watch its component come alive inside the building.
+            VEGA, premium HVAC, ısı pompası ve enerji sistemlerini tasarlar ve entegre eder.
+            Akıllı bir villanın interaktif 3D ikizini keşfedin — sağdaki herhangi bir
+            sistemi seçin ve binanın içindeki bileşenin canlandığını izleyin.
           </p>
           <div className="hero-reveal flex flex-wrap gap-4">
             <a
               href="#twin"
               className="px-6 h-12 grid place-items-center rounded-md bg-gradient-to-r from-cyan to-cyan-glow text-primary-foreground font-display tracking-[0.25em] uppercase text-xs [box-shadow:0_0_24px_hsl(var(--cyan)/0.5)] hover:[box-shadow:0_0_40px_hsl(var(--cyan)/0.85)] transition-all"
             >
-              Launch Digital Twin
+              Dijital İkizi Başlat
             </a>
             <a
               href="#quote"
               className="px-6 h-12 grid place-items-center rounded-md glass border border-amber/60 amber-text font-display tracking-[0.25em] uppercase text-xs hover:[box-shadow:0_0_28px_hsl(var(--amber)/0.6)] transition-all"
             >
-              Request a Quote
+              Teklif Al
             </a>
           </div>
         </div>
@@ -134,10 +134,10 @@ const Index = () => {
         {/* Stats */}
         <div data-reveal-children className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { k: "18+", v: "Premium Brands" },
-            { k: "25 yr", v: "Engineering Heritage" },
-            { k: "1.2k", v: "Projects Delivered" },
-            { k: "A+++", v: "Energy Class" },
+            { k: "18+", v: "Premium Marka" },
+            { k: "25 yıl", v: "Mühendislik Mirası" },
+            { k: "1.2k", v: "Tamamlanan Proje" },
+            { k: "A+++", v: "Enerji Sınıfı" },
           ].map((s) => (
             <div key={s.v} className="glass rounded-xl p-5">
               <div className="font-display text-3xl neon-text">{s.k}</div>
@@ -153,15 +153,16 @@ const Index = () => {
       <section id="twin" className="container py-20 md:py-28">
         <div data-reveal className="mb-12 max-w-3xl">
           <span className="font-display text-[10px] tracking-[0.4em] uppercase text-cyan">
-            ◉ Section 01 — Interactive Digital Twin
+            ◉ Bölüm 01 — İnteraktif Dijital İkiz
           </span>
           <h2 className="font-display text-3xl md:text-5xl mt-3 mb-4">
-            Click a system. Watch it <span className="amber-text">glow</span> inside the villa.
+            Bir sisteme tıklayın. Villanın içinde <span className="amber-text">parladığını</span> izleyin.
           </h2>
           <p className="text-foreground/70">
-            Every product in our catalogue is mapped to a real component inside the
-            building — boiler, heat pump, underfloor loops, manifolds, radiators, AC
-            cassettes and more. Drag to rotate, scroll to zoom.
+            Kataloğumuzdaki her ürün, binanın içindeki gerçek bir bileşene
+            eşlenmiştir — kombi, ısı pompası, yerden ısıtma devreleri, kollektörler,
+            radyatörler, klima kasetleri ve daha fazlası. Döndürmek için sürükleyin,
+            yakınlaştırmak için kaydırın.
           </p>
         </div>
 
@@ -183,21 +184,21 @@ const Index = () => {
       <section className="container py-20 md:py-28">
         <div data-reveal className="mb-12 max-w-3xl">
           <span className="font-display text-[10px] tracking-[0.4em] uppercase text-cyan">
-            ◉ Section 02 — Capabilities
+            ◉ Bölüm 02 — Yetkinlikler
           </span>
           <h2 className="font-display text-3xl md:text-5xl mt-3">
-            Full-stack mechanical engineering.
+            Uçtan uca mekanik mühendislik.
           </h2>
         </div>
 
         <div data-reveal-children className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {[
-            { t: "Heat Pump Systems", d: "Air-to-water, ground-source and hybrid systems with smart controls." },
-            { t: "Hydronic Heating", d: "Underfloor, radiator and fan-coil hydronics balanced to perfection." },
-            { t: "VRF & VRV Climate", d: "Multi-zone refrigerant systems for offices, hotels and villas." },
-            { t: "Solar & Hybrid DHW", d: "Solar-thermal coupled storage tanks and circulation control." },
-            { t: "Building Automation", d: "BMS, BACnet & Modbus integration with cloud telemetry." },
-            { t: "Energy Audits", d: "Thermal modelling and ROI-driven retrofit engineering." },
+            { t: "Isı Pompası Sistemleri", d: "Akıllı kontrollü havadan suya, topraktan suya ve hibrit sistemler." },
+            { t: "Hidronik Isıtma", d: "Mükemmel dengelenmiş yerden ısıtma, radyatör ve fan-coil sistemleri." },
+            { t: "VRF & VRV İklim", d: "Ofisler, oteller ve villalar için çok bölgeli soğutucu sistemler." },
+            { t: "Solar & Hibrit Sıcak Su", d: "Solar termal entegre depolama tankları ve sirkülasyon kontrolü." },
+            { t: "Bina Otomasyonu", d: "BMS, BACnet & Modbus entegrasyonu ve bulut telemetrisi." },
+            { t: "Enerji Etütleri", d: "Termal modelleme ve ROI odaklı yenileme mühendisliği." },
           ].map((c) => (
             <div key={c.t} className="glass rounded-xl p-6 hover:border-cyan/60 transition-colors">
               <div className="w-10 h-10 mb-4 rounded grid place-items-center border border-cyan/50 text-cyan font-display">
@@ -215,21 +216,21 @@ const Index = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div data-reveal>
             <span className="font-display text-[10px] tracking-[0.4em] uppercase text-cyan">
-              ◉ Section 03 — Engage
+              ◉ Bölüm 03 — İletişim
             </span>
             <h2 className="font-display text-3xl md:text-5xl mt-3 mb-5">
-              Ready to engineer your <span className="amber-text">project</span>?
+              <span className="amber-text">Projenizi</span> mühendislemeye hazır mısınız?
             </h2>
             <p className="text-foreground/70 mb-8">
-              Tell us about your building and we'll come back with a tailored
-              system design and quote — typically within 48 hours.
+              Binanızı bize anlatın, size özel bir sistem tasarımı ve teklif ile
+              tipik olarak 48 saat içinde geri dönelim.
             </p>
 
             <div className="space-y-4">
               {[
-                ["Response time", "≤ 48 hours"],
-                ["Coverage", "Türkiye & EU"],
-                ["Email", "mirayhelva15@icloud.com"],
+                ["Yanıt süresi", "≤ 48 saat"],
+                ["Hizmet bölgesi", "Türkiye & AB"],
+                ["E-posta", "mirayhelva15@icloud.com"],
               ].map(([k, v]) => (
                 <div key={k} className="flex items-center justify-between glass rounded-lg px-4 py-3">
                   <span className="text-[11px] font-display tracking-[0.25em] uppercase text-foreground/60">{k}</span>
@@ -240,7 +241,7 @@ const Index = () => {
 
             <div className="mt-8">
               <p className="text-[11px] font-display tracking-[0.3em] uppercase text-foreground/50 mb-3">
-                Follow VEGA
+                VEGA'yı takip edin
               </p>
               <SocialIcons />
             </div>
@@ -255,8 +256,8 @@ const Index = () => {
       {/* === FOOTER === */}
       <footer className="border-t border-cyan/15 mt-10">
         <div className="container py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] font-mono text-foreground/50">
-          <div>© {new Date().getFullYear()} VEGA Engineering. All systems operational.</div>
-          <div className="tracking-[0.25em] uppercase">Built with precision · Cyan · Amber · Navy</div>
+          <div>© {new Date().getFullYear()} VEGA Mühendislik. Tüm sistemler aktif.</div>
+          <div className="tracking-[0.25em] uppercase">Hassasiyetle inşa edildi · Cyan · Amber · Lacivert</div>
         </div>
       </footer>
     </div>
