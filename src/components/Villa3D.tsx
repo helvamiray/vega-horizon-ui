@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import acIndoorTex from "@/assets/ac-indoor.png";
+import heatpumpTex from "@/assets/heatpump-outdoor.png";
 
 interface Villa3DProps {
   highlightedKey: string | null;
