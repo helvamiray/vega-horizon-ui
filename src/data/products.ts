@@ -1,4 +1,4 @@
-export type ProductCategory = "heat-pump" | "boiler" | "ac" | "radiator" | "pipe" | "tank";
+export type ProductCategory = "isi-pompasi" | "kombi" | "klima" | "radyator" | "boru" | "tank";
 
 export interface Product {
   id: string;
@@ -9,80 +9,90 @@ export interface Product {
   componentKey: string;
   description: string;
   specs: string[];
+  /** Filename inside /public/products/ — upload manually */
+  image: string;
 }
 
 export const PRODUCTS: Product[] = [
   {
     id: "p-heatpump-daikin",
-    name: "Altherma 3 Air-to-Water Heat Pump",
+    name: "Altherma 3 Havadan Suya Isı Pompası",
     brand: "Daikin",
-    category: "heat-pump",
+    category: "isi-pompasi",
     componentKey: "heatpump",
-    description: "High-efficiency inverter heat pump for heating, cooling and DHW.",
-    specs: ["COP up to 5.1", "R-32 refrigerant", "8–16 kW range"],
+    description: "Isıtma, soğutma ve sıcak kullanım suyu için yüksek verimli inverter ısı pompası.",
+    specs: ["COP 5.1'e kadar", "R-32 soğutucu akışkan", "8–16 kW aralığı"],
+    image: "/products/product1.jpg",
   },
   {
     id: "p-boiler-buderus",
-    name: "Logamax Plus Condensing Boiler",
+    name: "Logamax Plus Yoğuşmalı Kombi",
     brand: "Buderus",
-    category: "boiler",
+    category: "kombi",
     componentKey: "boiler",
-    description: "Wall-mounted condensing gas boiler with smart modulation.",
-    specs: ["Up to 109% efficiency", "24–34 kW", "Modbus ready"],
+    description: "Akıllı modülasyonlu duvar tipi yoğuşmalı doğalgaz kombisi.",
+    specs: ["%109'a kadar verim", "24–34 kW", "Modbus uyumlu"],
+    image: "/products/product2.jpg",
   },
   {
     id: "p-radiator-eca",
-    name: "Panel Radiator Series 600",
+    name: "Panel Radyatör Seri 600",
     brand: "E.C.A",
-    category: "radiator",
+    category: "radyator",
     componentKey: "radiators",
-    description: "Premium steel panel radiators engineered for low-temp systems.",
-    specs: ["EN 442 certified", "10 year warranty", "Multiple sizes"],
+    description: "Düşük sıcaklık sistemleri için tasarlanmış premium çelik panel radyatörler.",
+    specs: ["EN 442 sertifikalı", "10 yıl garanti", "Çoklu boyut seçeneği"],
+    image: "/products/product3.jpg",
   },
   {
     id: "p-ac-daikin",
-    name: "VRV 5 Multi-Split System",
+    name: "VRV 5 Multi-Split Klima Sistemi",
     brand: "Daikin",
-    category: "ac",
+    category: "klima",
     componentKey: "ac-units",
-    description: "Variable refrigerant volume system for whole-home climate control.",
-    specs: ["Zoned cooling", "Wi-Fi control", "Ultra-quiet"],
+    description: "Tüm bina iklim kontrolü için değişken soğutucu hacimli sistem.",
+    specs: ["Bölgesel soğutma", "Wi-Fi kontrol", "Ultra sessiz"],
+    image: "/products/product4.jpg",
   },
   {
     id: "p-tank-kodsan",
-    name: "Stainless Buffer Tank 500L",
+    name: "Paslanmaz Tampon Tank 500L",
     brand: "KODSAN",
     category: "tank",
     componentKey: "tank",
-    description: "Insulated buffer & DHW tank for hybrid heating systems.",
-    specs: ["AISI 316 inner", "PU foam 80mm", "Solar coil"],
+    description: "Hibrit ısıtma sistemleri için izoleli tampon ve sıcak kullanım suyu tankı.",
+    specs: ["AISI 316 iç yüzey", "PU köpük 80mm", "Solar serpantin"],
+    image: "/products/product5.jpg",
   },
   {
     id: "p-pipe-frankische",
-    name: "PEX-A Underfloor Pipe System",
+    name: "PEX-A Yerden Isıtma Boru Sistemi",
     brand: "FRANKISCHE",
-    category: "pipe",
+    category: "boru",
     componentKey: "underfloor",
-    description: "Oxygen-barrier PEX-A pipework for underfloor heating loops.",
-    specs: ["DIN 4726", "Ø16–20 mm", "50 yr lifespan"],
+    description: "Yerden ısıtma devreleri için oksijen bariyerli PEX-A boru sistemi.",
+    specs: ["DIN 4726", "Ø16–20 mm", "50 yıl ömür"],
+    image: "/products/product6.jpg",
   },
   {
     id: "p-pump-lowara",
-    name: "Ecocirc Smart Circulator Pump",
+    name: "Ecocirc Akıllı Sirkülasyon Pompası",
     brand: "LOWARA",
-    category: "pipe",
+    category: "boru",
     componentKey: "pump",
-    description: "ErP-A circulator with auto-adapt for hydronic systems.",
-    specs: ["EEI ≤ 0.20", "PWM control", "Cast iron body"],
+    description: "Hidronik sistemler için otomatik adapte özellikli ErP-A sirkülasyon pompası.",
+    specs: ["EEI ≤ 0.20", "PWM kontrol", "Döküm gövde"],
+    image: "/products/product7.jpg",
   },
   {
     id: "p-valve-caleffi",
-    name: "Hydraulic Separator + Manifold",
+    name: "Hidrolik Denge Kabı + Kollektör",
     brand: "CALEFFI",
-    category: "pipe",
+    category: "boru",
     componentKey: "manifold",
-    description: "Brass manifold with flowmeters for balanced distribution.",
-    specs: ["2–12 ports", "Air & dirt separator", "Insulation kit"],
+    description: "Dengeli dağıtım için debimetreli pirinç kollektör.",
+    specs: ["2–12 çıkışlı", "Hava ve tortu ayırıcı", "İzolasyon kiti"],
+    image: "/products/product8.jpg",
   },
 ];
 
@@ -91,3 +101,12 @@ export const BRANDS = [
   "KODSAN", "Tanpera", "CALEFFI", "DUYAR", "Honeywell", "Kayse",
   "FRANKISCHE", "Danfoss", "Wates", "Tyco", "ARMAS",
 ];
+
+export const CATEGORY_LABEL: Record<ProductCategory, string> = {
+  "isi-pompasi": "Isı Pompası",
+  "kombi": "Kombi",
+  "klima": "Klima",
+  "radyator": "Radyatör",
+  "boru": "Boru / Pompa",
+  "tank": "Tank",
+};

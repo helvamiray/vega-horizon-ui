@@ -8,11 +8,11 @@ import { z } from "zod";
 const RECIPIENT = "mirayhelva15@icloud.com";
 
 const schema = z.object({
-  name: z.string().trim().min(2, "Name is too short").max(80),
-  email: z.string().trim().email("Invalid email").max(160),
+  name: z.string().trim().min(2, "İsim çok kısa").max(80),
+  email: z.string().trim().email("Geçersiz e-posta").max(160),
   company: z.string().trim().max(120).optional().or(z.literal("")),
   phone: z.string().trim().max(40).optional().or(z.literal("")),
-  message: z.string().trim().min(10, "Tell us a bit about the project").max(1500),
+  message: z.string().trim().min(10, "Lütfen projeniz hakkında kısaca bilgi verin").max(1500),
 });
 
 const QuoteForm = () => {
@@ -30,33 +30,33 @@ const QuoteForm = () => {
       return;
     }
     setSubmitting(true);
-    const subject = `VEGA Quote Request — ${parsed.data.name}`;
+    const subject = `VEGA Teklif Talebi — ${parsed.data.name}`;
     const body = [
-      `Name: ${parsed.data.name}`,
-      `Email: ${parsed.data.email}`,
-      `Company: ${parsed.data.company || "—"}`,
-      `Phone: ${parsed.data.phone || "—"}`,
+      `İsim: ${parsed.data.name}`,
+      `E-posta: ${parsed.data.email}`,
+      `Şirket: ${parsed.data.company || "—"}`,
+      `Telefon: ${parsed.data.phone || "—"}`,
       "",
-      "Project details:",
+      "Proje detayları:",
       parsed.data.message,
     ].join("\n");
     const url = `mailto:${RECIPIENT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = url;
     setTimeout(() => {
       setSubmitting(false);
-      toast.success("Opening your email client…");
+      toast.success("E-posta uygulamanız açılıyor…");
     }, 400);
   };
 
   return (
     <form onSubmit={handleSubmit} className="glass-strong rounded-2xl p-6 md:p-8 space-y-4 relative">
       <div className="absolute -top-3 left-6 px-3 py-0.5 bg-background border border-cyan/40 rounded">
-        <span className="font-display text-[10px] tracking-[0.3em] uppercase text-cyan">Mission Brief</span>
+        <span className="font-display text-[10px] tracking-[0.3em] uppercase text-cyan">Görev Brifingi</span>
       </div>
 
       <div className="grid sm:grid-cols-2 gap-4">
         <Input
-          placeholder="Full name"
+          placeholder="Ad Soyad"
           value={form.name}
           onChange={update("name")}
           className="bg-input/60 border-cyan/30 focus-visible:ring-cyan h-11"
@@ -64,20 +64,20 @@ const QuoteForm = () => {
         />
         <Input
           type="email"
-          placeholder="Email"
+          placeholder="E-posta"
           value={form.email}
           onChange={update("email")}
           className="bg-input/60 border-cyan/30 focus-visible:ring-cyan h-11"
           required
         />
         <Input
-          placeholder="Company (optional)"
+          placeholder="Şirket (opsiyonel)"
           value={form.company}
           onChange={update("company")}
           className="bg-input/60 border-cyan/30 focus-visible:ring-cyan h-11"
         />
         <Input
-          placeholder="Phone (optional)"
+          placeholder="Telefon (opsiyonel)"
           value={form.phone}
           onChange={update("phone")}
           className="bg-input/60 border-cyan/30 focus-visible:ring-cyan h-11"
@@ -85,7 +85,7 @@ const QuoteForm = () => {
       </div>
 
       <Textarea
-        placeholder="Describe your project — building type, systems of interest, timeline…"
+        placeholder="Projenizi anlatın — bina türü, ilgilendiğiniz sistemler, zaman planı…"
         value={form.message}
         onChange={update("message")}
         rows={5}
@@ -98,11 +98,11 @@ const QuoteForm = () => {
         disabled={submitting}
         className="w-full h-12 font-display tracking-[0.25em] uppercase text-sm bg-gradient-to-r from-cyan to-cyan-glow text-primary-foreground hover:opacity-90 transition-all [box-shadow:0_0_24px_hsl(var(--cyan)/0.5)] hover:[box-shadow:0_0_40px_hsl(var(--cyan)/0.8)]"
       >
-        {submitting ? "Transmitting…" : "Request a Quote"}
+        {submitting ? "Gönderiliyor…" : "Teklif Al"}
       </Button>
 
       <p className="text-[11px] text-foreground/50 text-center font-mono">
-        Secure transmission to {RECIPIENT}
+        Güvenli iletim: {RECIPIENT}
       </p>
     </form>
   );
