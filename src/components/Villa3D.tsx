@@ -376,14 +376,30 @@ const Villa3D = ({ highlightedKey }: Villa3DProps) => {
       camera.position.set(x, y, z);
       camera.lookAt(0, 2.5, 0);
 
-      // Pulse the highlighted component
+      // Pulse the highlighted component (and its halo, if textured)
+      // Reset all halos
+      componentsRef.current.forEach((obj, key) => {
+        obj.traverse((c) => {
+          const mesh = c as THREE.Mesh;
+          if ((mesh as any)._isHalo) {
+            const m = mesh.material as THREE.MeshBasicMaterial;
+            m.opacity = key === highlightRef.current ? 0 : 0; // reset; will set below if active
+          }
+        });
+      });
       if (highlightRef.current) {
         const obj = componentsRef.current.get(highlightRef.current);
         if (obj) {
           const t = performance.now() * 0.004;
           const k = 1.0 + Math.sin(t) * 0.4;
           obj.traverse((c) => {
-            const m = (c as THREE.Mesh).material as THREE.MeshStandardMaterial | undefined;
+            const mesh = c as THREE.Mesh;
+            if ((mesh as any)._isHalo) {
+              const m = mesh.material as THREE.MeshBasicMaterial;
+              m.opacity = 0.25 + Math.sin(t) * 0.15;
+              return;
+            }
+            const m = mesh.material as THREE.MeshStandardMaterial | undefined;
             if (m && "emissiveIntensity" in m) m.emissiveIntensity = 1.2 + k * 0.4;
           });
         }
