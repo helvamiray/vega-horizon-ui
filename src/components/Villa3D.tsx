@@ -26,8 +26,26 @@ const Villa3D = ({ highlightedKey }: Villa3DProps) => {
         if (!mesh.isMesh) return;
         const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
         mats.forEach((m) => {
-          const mat = m as THREE.MeshStandardMaterial & { _baseColor?: THREE.Color };
-          if (!mat || !("emissive" in mat)) return;
+          const mat = m as THREE.MeshStandardMaterial & { _isTextured?: boolean };
+          if (!mat) return;
+          // Textured planes: tint via .color, no emissive geometry change
+          if ((mat as any)._isTextured) {
+            if (key === highlightedKey) {
+              mat.color = new THREE.Color(0xff9d00);
+              if ("emissive" in mat) {
+                mat.emissive = new THREE.Color(0xff9d00);
+                mat.emissiveIntensity = 1.2;
+              }
+            } else {
+              mat.color = new THREE.Color(0xffffff);
+              if ("emissive" in mat) {
+                mat.emissive = new THREE.Color(0x000000);
+                mat.emissiveIntensity = 0;
+              }
+            }
+            return;
+          }
+          if (!("emissive" in mat)) return;
           if (key === highlightedKey) {
             mat.emissive = new THREE.Color(0xff9d00);
             mat.emissiveIntensity = 1.4;
