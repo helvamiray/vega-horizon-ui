@@ -108,6 +108,50 @@ const Villa3D = ({ highlightedKey }: Villa3DProps) => {
     ghost2.position.y = 4.2;
     villaGroup.add(ghost2);
 
+    // === Interior zone partitions (wireframe) ===
+    // Living room (ground, left), Mechanical room (ground, right),
+    // Bedrooms (upper floor), Rooftop deck above roof base.
+    const zoneMat = new THREE.LineBasicMaterial({
+      color: 0x00f0ff, transparent: true, opacity: 0.45,
+    });
+    // Living room box (ground, left half)
+    const livingGeom = new THREE.BoxGeometry(3.2, 2.8, 3.6);
+    const living = new THREE.LineSegments(new THREE.EdgesGeometry(livingGeom), zoneMat);
+    living.position.set(-1.4, 1.5, 0);
+    villaGroup.add(living);
+    // Mechanical room (ground, right)
+    const mechGeom = new THREE.BoxGeometry(2.4, 2.8, 3.6);
+    const mech = new THREE.LineSegments(new THREE.EdgesGeometry(mechGeom), zoneMat);
+    mech.position.set(1.6, 1.5, 0);
+    villaGroup.add(mech);
+    // Bedrooms partition (upper floor)
+    const bedGeom = new THREE.BoxGeometry(2.8, 2.2, 3.6);
+    const bed1 = new THREE.LineSegments(new THREE.EdgesGeometry(bedGeom), zoneMat);
+    bed1.position.set(-1.5, 4.2, 0);
+    villaGroup.add(bed1);
+    const bed2 = new THREE.LineSegments(new THREE.EdgesGeometry(bedGeom), zoneMat);
+    bed2.position.set(1.5, 4.2, 0);
+    villaGroup.add(bed2);
+    // Floor slab between levels
+    const slabGeom = new THREE.BoxGeometry(6, 0.08, 4);
+    const slab = new THREE.LineSegments(new THREE.EdgesGeometry(slabGeom), zoneMat);
+    slab.position.y = 3.0;
+    villaGroup.add(slab);
+    // Rooftop deck rail
+    const deckGeom = new THREE.BoxGeometry(5.2, 0.5, 3.4);
+    const deck = new THREE.LineSegments(new THREE.EdgesGeometry(deckGeom), zoneMat);
+    deck.position.y = 5.55;
+    villaGroup.add(deck);
+    // Windows (front facade)
+    const winMat = new THREE.LineBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.6 });
+    [[-2, 1.4, 2.01], [0, 1.4, 2.01], [2, 1.4, 2.01], [-2, 4.1, 2.01], [0, 4.1, 2.01], [2, 4.1, 2.01]].forEach((p) => {
+      const w = new THREE.LineSegments(
+        new THREE.EdgesGeometry(new THREE.BoxGeometry(1.0, 0.9, 0.02)), winMat
+      );
+      w.position.set(p[0], p[1], p[2]);
+      villaGroup.add(w);
+    });
+
     // === Interior components (highlightable) ===
     const makeComp = (
       key: string,
