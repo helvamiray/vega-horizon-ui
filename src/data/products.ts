@@ -11,6 +11,8 @@ export interface Product {
   specs: string[];
   /** Filename inside /public/products/ — upload manually */
   image: string;
+  /** Background video URL for the product card (auto-playing, muted, looped) */
+  video: string;
 }
 
 export const PRODUCTS: Product[] = [
