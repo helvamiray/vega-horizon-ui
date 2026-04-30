@@ -3,7 +3,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BrandSlider from "@/components/BrandSlider";
 import Villa3D from "@/components/Villa3D";
-import ProductGrid from "@/components/ProductGrid";
+import ProductExplorer from "@/components/ProductExplorer";
+import VegaVideo from "@/components/VegaVideo";
 import QuoteForm from "@/components/QuoteForm";
 import SocialIcons from "@/components/SocialIcons";
 import { PRODUCTS } from "@/data/products";
@@ -88,8 +89,10 @@ const Index = () => {
           </a>
 
           <nav className="hidden md:flex items-center gap-8 font-display text-xs tracking-[0.25em] uppercase text-foreground/70">
+            <a href="#hakkimizda" className="hover:text-cyan transition-colors">Hakkımızda</a>
             <a href="#twin" className="hover:text-cyan transition-colors">Dijital İkiz</a>
             <a href="#systems" className="hover:text-cyan transition-colors">Ürünler</a>
+            <a href="#vizyon" className="hover:text-cyan transition-colors">Vizyon</a>
             <a href="#quote" className="hover:text-cyan transition-colors">Teklif Al</a>
           </nav>
 
@@ -167,16 +170,75 @@ const Index = () => {
         </div>
 
         <div id="systems" className="grid lg:grid-cols-5 gap-6">
-          <div data-reveal className="lg:col-span-3">
+          <div data-reveal className="lg:col-span-3 lg:sticky lg:top-24 lg:self-start">
             <Villa3D highlightedKey={highlightedKey} />
           </div>
-          <div data-reveal className="lg:col-span-2 max-h-[600px] overflow-y-auto pr-1 [scrollbar-width:thin]">
-            <ProductGrid
-              products={PRODUCTS}
+          <div data-reveal className="lg:col-span-2 max-h-[680px] overflow-y-auto pr-1 [scrollbar-width:thin]">
+            <ProductExplorer
               selectedId={selectedId}
               onSelect={setSelectedId}
             />
           </div>
+        </div>
+      </section>
+
+      {/* === HAKKIMIZDA === */}
+      <section id="hakkimizda" className="container py-20 md:py-28">
+        <div data-reveal className="max-w-4xl">
+          <span className="font-display text-[10px] tracking-[0.4em] uppercase text-cyan">
+            ◉ Bölüm · Hakkımızda
+          </span>
+          <h2 className="font-display text-3xl md:text-5xl mt-3 mb-6">Hakkımızda</h2>
+          <p className="text-foreground/80 text-base md:text-lg leading-relaxed">
+            Vega İklimlendirme ve Enerji A.Ş., iklimlendirme ve mekanik tesisat alanlarında
+            güçlü marka portföyüyle proje odaklı tedarik ve mühendislik desteği sunar.
+            Doğru ürün seçimi, teknik doğrulama ve zamanında teslim prensiplerimizle;
+            müteahhitler, projeciler ve uygulayıcı firmalar için güvenilir bir çözüm ortağıyız.
+          </p>
+        </div>
+
+        <div data-reveal-children className="mt-10 grid md:grid-cols-2 gap-6">
+          <article className="glass rounded-xl p-7">
+            <span className="font-display text-[10px] tracking-[0.35em] uppercase text-cyan">◆ Misyon</span>
+            <h3 className="font-display text-2xl mt-2 mb-3">Misyonumuz</h3>
+            <p className="text-foreground/75 leading-relaxed">
+              İklimlendirme ve mekanik tesisat alanında, sektörün önde gelen markalarıyla
+              birlikte; projelere teknik doğruluğu yüksek, sürdürülebilir ve ekonomik
+              çözümler sunmak. Tedarikten devreye almaya kadar tüm süreçlerde; mühendislik
+              bilgisi, ürün çeşitliliği ve güvenilir hizmet anlayışımızla iş ortaklarımızın
+              yanında olmak.
+            </p>
+          </article>
+          <article className="glass rounded-xl p-7 border-amber/40">
+            <span className="font-display text-[10px] tracking-[0.35em] uppercase amber-text">◆ Vizyon</span>
+            <h3 className="font-display text-2xl mt-2 mb-3">Vizyonumuz</h3>
+            <p className="text-foreground/75 leading-relaxed">
+              İklimlendirme ve enerji sektöründe; güçlü markalarla çalışan, teknik
+              uzmanlığıyla öne çıkan ve sahada çözüm sunma kabiliyetiyle fark yaratan
+              öncü bir tedarik ve mühendislik firması olmak. Sürekli gelişen teknolojiyi
+              yakından takip ederek, müşteri memnuniyetini her zaman ön planda tutmak ve
+              tercih edilen çözüm ortağı haline gelmek.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      {/* === VEGA TANITIM VIDEO === */}
+      <section id="vizyon" className="container py-20 md:py-28">
+        <div data-reveal className="max-w-3xl mb-10">
+          <span className="font-display text-[10px] tracking-[0.4em] uppercase text-cyan">
+            ◉ Bölüm · Sahadan
+          </span>
+          <h2 className="font-display text-3xl md:text-5xl mt-3 mb-4">
+            Vizyonumuz ve Sahadaki Gücümüz
+          </h2>
+          <p className="text-foreground/70">
+            Mühendislik bilgisi, güçlü marka portföyü ve saha tecrübemizle nasıl çalıştığımızı
+            kısa tanıtım filmimizde keşfedin.
+          </p>
+        </div>
+        <div data-reveal>
+          <VegaVideo />
         </div>
       </section>
 

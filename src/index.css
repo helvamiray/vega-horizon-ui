@@ -82,9 +82,11 @@
     background: var(--gradient-hero);
     background-attachment: fixed;
   }
-  h1, h2, h3, h4 {
-    font-family: 'Orbitron', 'Rajdhani', system-ui, sans-serif;
-    letter-spacing: 0.02em;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lexend', 'Orbitron', system-ui, sans-serif;
+    letter-spacing: 0.01em;
+    color: hsl(var(--cyan));
+    text-shadow: 0 0 14px hsl(var(--cyan) / 0.45);
   }
 }
 
