@@ -195,8 +195,60 @@ const Villa3D = ({ highlightedKey }: Villa3DProps) => {
       return mesh;
     };
 
-    // Heat pump (outside, left)
-    makeComp("heatpump", new THREE.BoxGeometry(1.2, 1.2, 0.8), [-4.2, 0.6, 1.5]);
+    // Texture loader for realistic units
+    const texLoader = new THREE.TextureLoader();
+    const acTex = texLoader.load(acIndoorTex);
+    const hpTex = texLoader.load(heatpumpTex);
+    acTex.colorSpace = THREE.SRGBColorSpace;
+    hpTex.colorSpace = THREE.SRGBColorSpace;
+
+    /** Create a textured, double-sided plane that represents a real product. */
+    const makeTexturedUnit = (
+      tex: THREE.Texture,
+      width: number,
+      height: number,
+      pos: [number, number, number],
+      rotY = 0
+    ) => {
+      const group = new THREE.Group();
+      const mat = new THREE.MeshStandardMaterial({
+        map: tex,
+        transparent: true,
+        side: THREE.DoubleSide,
+        metalness: 0.1,
+        roughness: 0.7,
+        alphaTest: 0.05,
+      });
+      (mat as any)._isTextured = true;
+      const mesh = new THREE.Mesh(new THREE.PlaneGeometry(width, height), mat);
+      mesh.rotation.y = rotY;
+      group.add(mesh);
+
+      // Halo plane behind for amber glow when active (slightly larger)
+      const halo = new THREE.Mesh(
+        new THREE.PlaneGeometry(width * 1.6, height * 1.8),
+        new THREE.MeshBasicMaterial({
+          color: 0xff9d00,
+          transparent: true,
+          opacity: 0,
+          side: THREE.DoubleSide,
+          depthWrite: false,
+        })
+      );
+      halo.rotation.y = rotY;
+      halo.position.z = -0.01;
+      (halo as any)._isHalo = true;
+      group.add(halo);
+
+      group.position.set(...pos);
+      return group;
+    };
+
+    // Heat pump (outside, left) — realistic ~0.9m wide
+    const heatpump = makeTexturedUnit(hpTex, 1.1, 0.95, [-4.0, 0.5, 1.5], Math.PI / 6);
+    heatpump.name = "heatpump";
+    villaGroup.add(heatpump);
+    componentsRef.current.set("heatpump", heatpump);
 
     // Boiler (interior, ground floor right)
     makeComp("boiler", new THREE.CylinderGeometry(0.35, 0.35, 1.2, 16), [2.2, 1.0, -1.2]);
@@ -249,21 +301,16 @@ const Villa3D = ({ highlightedKey }: Villa3DProps) => {
     villaGroup.add(radGroup);
     componentsRef.current.set("radiators", radGroup);
 
-    // AC indoor units (upper floor, ceiling cassettes)
+    // AC indoor units (wall-mounted on upper floor, realistic ~0.85m wide × 0.28m tall)
     const acGroup = new THREE.Group();
-    const acPositions: [number, number, number][] = [
-      [-1.8, 5.1, 0], [1.8, 5.1, 0],
+    const acConfigs: { pos: [number, number, number]; rot: number }[] = [
+      { pos: [-1.8, 4.7, 1.95], rot: 0 },          // bedroom 1, front wall
+      { pos: [1.8, 4.7, 1.95], rot: 0 },           // bedroom 2, front wall
+      { pos: [0, 4.7, -1.95], rot: Math.PI },      // back wall unit
     ];
-    acPositions.forEach((p) => {
-      const ac = new THREE.Mesh(
-        new THREE.BoxGeometry(0.8, 0.18, 0.8),
-        new THREE.MeshStandardMaterial({
-          color: 0x00f0ff, emissive: 0x00f0ff, emissiveIntensity: 0.25,
-          metalness: 0.5, roughness: 0.3,
-        })
-      );
-      ac.position.set(...p);
-      acGroup.add(ac);
+    acConfigs.forEach((c) => {
+      const unit = makeTexturedUnit(acTex, 0.9, 0.3, c.pos, c.rot);
+      acGroup.add(unit);
     });
     acGroup.name = "ac-units";
     villaGroup.add(acGroup);
