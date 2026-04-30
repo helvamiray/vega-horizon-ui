@@ -11,6 +11,8 @@ export interface Product {
   specs: string[];
   /** Filename inside /public/products/ — upload manually */
   image: string;
+  /** Background video URL for the product card (auto-playing, muted, looped) */
+  video: string;
 }
 
 export const PRODUCTS: Product[] = [
@@ -23,6 +25,7 @@ export const PRODUCTS: Product[] = [
     description: "Isıtma, soğutma ve sıcak kullanım suyu için yüksek verimli inverter ısı pompası.",
     specs: ["COP 5.1'e kadar", "R-32 soğutucu akışkan", "8–16 kW aralığı"],
     image: "/products/product1.jpg",
+    video: "/videos/product1.mp4",
   },
   {
     id: "p-boiler-buderus",
@@ -33,6 +36,7 @@ export const PRODUCTS: Product[] = [
     description: "Akıllı modülasyonlu duvar tipi yoğuşmalı doğalgaz kombisi.",
     specs: ["%109'a kadar verim", "24–34 kW", "Modbus uyumlu"],
     image: "/products/product2.jpg",
+    video: "/videos/product2.mp4",
   },
   {
     id: "p-radiator-eca",
@@ -43,6 +47,7 @@ export const PRODUCTS: Product[] = [
     description: "Düşük sıcaklık sistemleri için tasarlanmış premium çelik panel radyatörler.",
     specs: ["EN 442 sertifikalı", "10 yıl garanti", "Çoklu boyut seçeneği"],
     image: "/products/product3.jpg",
+    video: "/videos/product3.mp4",
   },
   {
     id: "p-ac-daikin",
@@ -53,6 +58,7 @@ export const PRODUCTS: Product[] = [
     description: "Tüm bina iklim kontrolü için değişken soğutucu hacimli sistem.",
     specs: ["Bölgesel soğutma", "Wi-Fi kontrol", "Ultra sessiz"],
     image: "/products/product4.jpg",
+    video: "/videos/product4.mp4",
   },
   {
     id: "p-tank-kodsan",
@@ -63,6 +69,7 @@ export const PRODUCTS: Product[] = [
     description: "Hibrit ısıtma sistemleri için izoleli tampon ve sıcak kullanım suyu tankı.",
     specs: ["AISI 316 iç yüzey", "PU köpük 80mm", "Solar serpantin"],
     image: "/products/product5.jpg",
+    video: "/videos/product5.mp4",
   },
   {
     id: "p-pipe-frankische",
@@ -73,6 +80,7 @@ export const PRODUCTS: Product[] = [
     description: "Yerden ısıtma devreleri için oksijen bariyerli PEX-A boru sistemi.",
     specs: ["DIN 4726", "Ø16–20 mm", "50 yıl ömür"],
     image: "/products/product6.jpg",
+    video: "/videos/product6.mp4",
   },
   {
     id: "p-pump-lowara",
@@ -83,6 +91,7 @@ export const PRODUCTS: Product[] = [
     description: "Hidronik sistemler için otomatik adapte özellikli ErP-A sirkülasyon pompası.",
     specs: ["EEI ≤ 0.20", "PWM kontrol", "Döküm gövde"],
     image: "/products/product7.jpg",
+    video: "/videos/product7.mp4",
   },
   {
     id: "p-valve-caleffi",
@@ -93,6 +102,7 @@ export const PRODUCTS: Product[] = [
     description: "Dengeli dağıtım için debimetreli pirinç kollektör.",
     specs: ["2–12 çıkışlı", "Hava ve tortu ayırıcı", "İzolasyon kiti"],
     image: "/products/product8.jpg",
+    video: "/videos/product8.mp4",
   },
 ];
 

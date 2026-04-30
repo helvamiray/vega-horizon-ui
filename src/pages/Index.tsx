@@ -8,12 +8,15 @@ import VegaVideo from "@/components/VegaVideo";
 import QuoteForm from "@/components/QuoteForm";
 import SocialIcons from "@/components/SocialIcons";
 import { PRODUCTS } from "@/data/products";
+import { useCart } from "@/context/CartContext";
+import { ShoppingBag } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Index = () => {
   const [selectedId, setSelectedId] = useState<string | null>(PRODUCTS[0].id);
   const rootRef = useRef<HTMLDivElement>(null);
+  const { count, openCart } = useCart();
 
   const highlightedKey = useMemo(
     () => PRODUCTS.find((p) => p.id === selectedId)?.componentKey ?? null,
@@ -96,7 +99,23 @@ const Index = () => {
             <a href="#quote" className="hover:text-cyan transition-colors">Teklif Al</a>
           </nav>
 
-          <SocialIcons />
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={openCart}
+              className="relative h-10 px-3 rounded-md glass border border-cyan/40 hover:border-cyan flex items-center gap-2 font-display text-[10px] tracking-[0.25em] uppercase text-cyan hover:[box-shadow:0_0_18px_hsl(var(--cyan)/0.5)] transition-all"
+              aria-label="Sepetim"
+            >
+              <ShoppingBag className="w-4 h-4" />
+              <span className="hidden sm:inline">Sepetim</span>
+              {count > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 grid place-items-center w-5 h-5 rounded-full bg-amber text-background text-[10px] font-bold [box-shadow:0_0_12px_hsl(var(--amber)/0.7)]">
+                  {count}
+                </span>
+              )}
+            </button>
+            <SocialIcons />
+          </div>
         </div>
       </header>
 
